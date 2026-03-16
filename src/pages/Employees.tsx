@@ -26,8 +26,8 @@ export default function Employees() {
     <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Employees</h1>
-          <p className="text-gray-500 mt-1">Manage your organization's human resources</p>
+          <h1 className="text-3xl font-bold tracking-tight">Zaposleni</h1>
+          <p className="text-gray-500 mt-1">Upravljajte ljudskim resursima vaše organizacije</p>
         </div>
 
         <button 
@@ -35,7 +35,7 @@ export default function Employees() {
           className="bg-[#151619] text-white font-bold px-6 py-2.5 rounded-xl shadow-sm flex items-center space-x-2 hover:bg-black transition-all"
         >
           <UserPlus size={20} />
-          <span>Add Employee</span>
+          <span>Dodaj zaposlenog</span>
         </button>
       </div>
 
@@ -74,11 +74,11 @@ export default function Employees() {
               </div>
               <div className="flex items-center text-sm text-gray-500">
                 <Phone size={16} className="mr-3 text-gray-400" />
-                {employee.phone || 'No phone'}
+                {employee.phone || 'Bez telefona'}
               </div>
               <div className="flex items-center text-sm text-gray-500">
                 <MapPin size={16} className="mr-3 text-gray-400" />
-                Remote / Office
+                Rad od kuće / Kancelarija
               </div>
             </div>
 
@@ -86,9 +86,9 @@ export default function Employees() {
               <span className={`text-[10px] font-bold px-2 py-1 rounded-full uppercase ${
                 employee.status === 'Active' ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-600'
               }`}>
-                {employee.status}
+                {employee.status === 'Active' ? 'Aktivan' : 'Neaktivan'}
               </span>
-              <button className="text-xs font-bold text-[#00FF00] hover:underline">View Profile</button>
+              <button className="text-xs font-bold text-[#00FF00] hover:underline">Pogledaj profil</button>
             </div>
           </div>
         ))}

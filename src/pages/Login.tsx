@@ -51,13 +51,13 @@ export default function Login() {
           <div className="w-16 h-16 bg-[#00FF00] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(0,255,0,0.4)]">
             <Lock size={32} className="text-black" />
           </div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">Enterprise Login</h1>
-          <p className="text-gray-400 mt-2">Access the BTOMS platform</p>
+          <h1 className="text-3xl font-bold text-white tracking-tight">Prijava na sistem</h1>
+          <p className="text-gray-400 mt-2">Pristupite BTOMS platformi</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Email Address</label>
+            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Email adresa</label>
             <div className="relative">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
               <input 
@@ -72,7 +72,7 @@ export default function Login() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Password</label>
+            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Lozinka</label>
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
               <input 
@@ -101,9 +101,9 @@ export default function Login() {
             disabled={loading}
             className="w-full bg-[#00FF00] hover:bg-[#00DD00] text-black font-bold py-4 rounded-2xl flex items-center justify-center space-x-2 transition-all shadow-[0_0_20px_rgba(0,255,0,0.2)] active:scale-[0.98]"
           >
-            {loading ? 'Authenticating...' : (
+            {loading ? 'Autentifikacija...' : (
               <>
-                <span>Sign In</span>
+                <span>Prijavi se</span>
                 <ArrowRight size={20} />
               </>
             )}
@@ -112,7 +112,7 @@ export default function Login() {
 
         <div className="mt-8 pt-8 border-t border-white/5 text-center">
           <p className="text-xs text-gray-500">
-            Forgot your credentials? Contact your system administrator.
+            Zaboravili ste podatke? Kontaktirajte administratora sistema.
           </p>
         </div>
       </motion.div>

@@ -31,8 +31,8 @@ export default function Tasks() {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Task Management</h1>
-          <p className="text-gray-500 mt-1">Manage and track your team's progress</p>
+          <h1 className="text-3xl font-bold tracking-tight">Upravljanje predmetima</h1>
+          <p className="text-gray-500 mt-1">Upravljajte i pratite napredak svog tima</p>
         </div>
 
         <div className="flex items-center space-x-3">
@@ -56,7 +56,7 @@ export default function Tasks() {
             className="bg-[#00FF00] text-black font-bold px-6 py-2.5 rounded-xl shadow-sm flex items-center space-x-2 hover:bg-[#00DD00] transition-all"
           >
             <Plus size={20} />
-            <span>New Task</span>
+            <span>Novi predmet</span>
           </button>
         </div>
       </div>
@@ -67,18 +67,18 @@ export default function Tasks() {
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             <input 
               type="text" 
-              placeholder="Filter tasks..." 
+              placeholder="Filtriraj predmete..." 
               className="pl-10 pr-4 py-2 bg-gray-50 border-none rounded-xl text-sm w-64 focus:ring-1 focus:ring-[#00FF00]"
             />
           </div>
           <button className="flex items-center space-x-2 text-sm text-gray-500 hover:text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50">
             <Filter size={16} />
-            <span>Filters</span>
+            <span>Filteri</span>
           </button>
         </div>
 
         <div className="text-sm text-gray-500">
-          Showing <span className="font-bold text-black">{tasks.length}</span> tasks
+          Prikazano <span className="font-bold text-black">{tasks.length}</span> predmeta
         </div>
       </div>
 
@@ -89,12 +89,12 @@ export default function Tasks() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-100">
-                <th className="p-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Task</th>
+                <th className="p-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Predmet</th>
                 <th className="p-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Status</th>
-                <th className="p-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Priority</th>
-                <th className="p-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Assigned To</th>
-                <th className="p-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Due Date</th>
-                <th className="p-4 text-xs font-bold text-gray-400 uppercase tracking-widest text-right">Actions</th>
+                <th className="p-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Prioritet</th>
+                <th className="p-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Dodeljeno</th>
+                <th className="p-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Rok</th>
+                <th className="p-4 text-xs font-bold text-gray-400 uppercase tracking-widest text-right">Akcije</th>
               </tr>
             </thead>
             <tbody>
@@ -139,17 +139,17 @@ export default function Tasks() {
                       <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-[10px] font-bold">
                         {task.assignedTo?.firstName[0] || '?'}
                       </div>
-                      <span className="text-sm">{task.assignedTo ? `${task.assignedTo.firstName} ${task.assignedTo.lastName}` : 'Unassigned'}</span>
+                      <span className="text-sm">{task.assignedTo ? `${task.assignedTo.firstName} ${task.assignedTo.lastName}` : 'Nedodeljeno'}</span>
                     </div>
                   </td>
                   <td className="p-4 text-sm text-gray-500">
-                    {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'N/A'}
+                    {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'N/P'}
                   </td>
                   <td className="p-4 text-right">
                     <button 
                       onClick={(e) => { e.stopPropagation(); handleDeleteTask(task.id); }}
                       className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"
-                      title="Delete Task"
+                      title="Obriši predmet"
                     >
                       <Trash2 size={16} />
                     </button>

@@ -34,8 +34,8 @@ export default function Departments() {
     <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Departments</h1>
-          <p className="text-gray-500 mt-1">Manage organizational structure</p>
+          <h1 className="text-3xl font-bold tracking-tight">Odeljenja</h1>
+          <p className="text-gray-500 mt-1">Upravljajte organizacionom strukturom</p>
         </div>
 
         <button 
@@ -43,7 +43,7 @@ export default function Departments() {
           className="bg-[#151619] text-white font-bold px-6 py-2.5 rounded-xl shadow-sm flex items-center space-x-2 hover:bg-black transition-all"
         >
           <Plus size={20} />
-          <span>Add Department</span>
+          <span>Dodaj odeljenje</span>
         </button>
       </div>
 
@@ -64,11 +64,11 @@ export default function Departments() {
             </div>
 
             <h3 className="text-xl font-bold mb-2 group-hover:text-[#00FF00] transition-colors">{dept.name}</h3>
-            <p className="text-sm text-gray-500 mb-6 line-clamp-2">{dept.description || 'No description provided.'}</p>
+            <p className="text-sm text-gray-500 mb-6 line-clamp-2">{dept.description || 'Opis nije unet.'}</p>
             
             <div className="flex items-center justify-between pt-6 border-t border-gray-50">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
-                {employees.filter(e => e.departmentId === dept.id).length} Employees
+                {employees.filter(e => e.departmentId === dept.id).length} Zaposlenih
               </span>
               <div className="flex items-center space-x-2">
                 <div className="flex -space-x-2">

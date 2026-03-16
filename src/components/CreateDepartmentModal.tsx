@@ -42,7 +42,7 @@ export default function CreateDepartmentModal({ isOpen, onClose, editData }: Cre
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
       <div className="bg-white rounded-2xl w-full max-w-md p-6 shadow-2xl">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-bold">{editData ? 'Edit Department' : 'Create Department'}</h2>
+          <h2 className="text-xl font-bold">{editData ? 'Izmeni odeljenje' : 'Kreiraj odeljenje'}</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
             <X size={24} />
           </button>
@@ -50,7 +50,7 @@ export default function CreateDepartmentModal({ isOpen, onClose, editData }: Cre
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Name</label>
+            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Naziv</label>
             <input
               required
               type="text"
@@ -61,7 +61,7 @@ export default function CreateDepartmentModal({ isOpen, onClose, editData }: Cre
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Description</label>
+            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Opis</label>
             <textarea
               className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-[#00FF00] focus:ring-0 transition-colors"
               rows={3}
@@ -74,7 +74,7 @@ export default function CreateDepartmentModal({ isOpen, onClose, editData }: Cre
             type="submit"
             className="w-full bg-[#00FF00] text-black font-bold py-3 rounded-xl hover:bg-[#00CC00] transition-colors mt-4"
           >
-            {editData ? 'Update Department' : 'Create Department'}
+            {editData ? 'Ažuriraj odeljenje' : 'Kreiraj odeljenje'}
           </button>
         </form>
       </div>

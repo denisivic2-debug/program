@@ -24,10 +24,10 @@ export default function Layout({ children, activeTab, setActiveTab }: LayoutProp
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(true);
 
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'tasks', label: 'Tasks', icon: CheckSquare },
-    { id: 'employees', label: 'Employees', icon: Users },
-    { id: 'departments', label: 'Departments', icon: Building2 },
+    { id: 'dashboard', label: 'Kontrolna tabla', icon: LayoutDashboard },
+    { id: 'tasks', label: 'Predmeti', icon: CheckSquare },
+    { id: 'employees', label: 'Zaposleni', icon: Users },
+    { id: 'departments', label: 'Odeljenja', icon: Building2 },
   ];
 
   return (
@@ -76,7 +76,7 @@ export default function Layout({ children, activeTab, setActiveTab }: LayoutProp
             className="w-full flex items-center p-3 text-gray-400 hover:text-red-400 hover:bg-red-400/10 rounded-xl transition-all"
           >
             <LogOut size={20} />
-            {isSidebarOpen && <span className="ml-3">Logout</span>}
+            {isSidebarOpen && <span className="ml-3">Odjavi se</span>}
           </button>
         </div>
       </motion.aside>
@@ -89,7 +89,7 @@ export default function Layout({ children, activeTab, setActiveTab }: LayoutProp
             <Search size={18} className="text-gray-400" />
             <input 
               type="text" 
-              placeholder="Search tasks, employees..." 
+              placeholder="Pretraži predmete, zaposlene..." 
               className="bg-transparent border-none focus:ring-0 text-sm ml-2 w-full"
             />
           </div>

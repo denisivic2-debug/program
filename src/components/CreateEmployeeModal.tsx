@@ -61,7 +61,7 @@ export default function CreateEmployeeModal({ isOpen, onClose, editData }: Creat
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
       <div className="bg-white rounded-2xl w-full max-w-md p-6 shadow-2xl">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-bold">{editData ? 'Edit Employee' : 'Add Employee'}</h2>
+          <h2 className="text-xl font-bold">{editData ? 'Izmeni zaposlenog' : 'Dodaj zaposlenog'}</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
             <X size={24} />
           </button>
@@ -70,7 +70,7 @@ export default function CreateEmployeeModal({ isOpen, onClose, editData }: Creat
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase mb-1">First Name</label>
+              <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Ime</label>
               <input
                 required
                 type="text"
@@ -80,7 +80,7 @@ export default function CreateEmployeeModal({ isOpen, onClose, editData }: Creat
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Last Name</label>
+              <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Prezime</label>
               <input
                 required
                 type="text"
@@ -103,7 +103,7 @@ export default function CreateEmployeeModal({ isOpen, onClose, editData }: Creat
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Phone</label>
+            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Telefon</label>
             <input
               type="text"
               className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-[#00FF00] focus:ring-0 transition-colors"
@@ -113,7 +113,7 @@ export default function CreateEmployeeModal({ isOpen, onClose, editData }: Creat
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Position</label>
+            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Pozicija</label>
             <input
               required
               type="text"
@@ -124,14 +124,14 @@ export default function CreateEmployeeModal({ isOpen, onClose, editData }: Creat
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Department</label>
+            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Odeljenje</label>
             <select
               required
               className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-[#00FF00] focus:ring-0 transition-colors"
               value={formData.departmentId}
               onChange={(e) => setFormData({ ...formData, departmentId: e.target.value })}
             >
-              <option value="">Select Department</option>
+              <option value="">Izaberi odeljenje</option>
               {departments.map((dept) => (
                 <option key={dept.id} value={dept.id}>{dept.name}</option>
               ))}
@@ -145,8 +145,8 @@ export default function CreateEmployeeModal({ isOpen, onClose, editData }: Creat
               value={formData.status}
               onChange={(e) => setFormData({ ...formData, status: e.target.value })}
             >
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+              <option value="Active">Aktivan</option>
+              <option value="Inactive">Neaktivan</option>
             </select>
           </div>
 
@@ -154,7 +154,7 @@ export default function CreateEmployeeModal({ isOpen, onClose, editData }: Creat
             type="submit"
             className="w-full bg-[#00FF00] text-black font-bold py-3 rounded-xl hover:bg-[#00CC00] transition-colors mt-4"
           >
-            {editData ? 'Update Employee' : 'Add Employee'}
+            {editData ? 'Ažuriraj zaposlenog' : 'Dodaj zaposlenog'}
           </button>
         </form>
       </div>

@@ -61,8 +61,8 @@ export default function CreateTaskModal({ isOpen, onClose }: CreateTaskModalProp
       <div className="bg-white rounded-2xl w-full max-w-2xl p-0 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
         <div className="flex justify-between items-center p-6 border-b border-gray-100 bg-gray-50/50">
           <div>
-            <h2 className="text-xl font-bold text-gray-900">New Case Entry</h2>
-            <p className="text-xs text-gray-500">Register a new case or task in the system</p>
+            <h2 className="text-xl font-bold text-gray-900">Novi unos predmeta</h2>
+            <p className="text-xs text-gray-500">Registrujte novi predmet ili zadatak u sistemu</p>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-gray-200 rounded-full transition-colors">
             <X size={20} />
@@ -75,23 +75,23 @@ export default function CreateTaskModal({ isOpen, onClose }: CreateTaskModalProp
             <div className="space-y-4">
               <div className="flex items-center space-x-2 pb-2 border-b border-gray-100">
                 <div className="w-1 h-4 bg-[#00FF00] rounded-full" />
-                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Case Identity</h3>
+                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Identitet predmeta</h3>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="md:col-span-2">
-                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Title / Subject</label>
+                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Naslov / Predmet</label>
                   <input
                     type="text"
                     required
                     className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-[#00FF00] focus:ring-0 transition-colors font-medium text-sm"
-                    placeholder="e.g. Parnični postupak - Tužba"
+                    placeholder="npr. Parnični postupak - Tužba"
                     value={formData.title}
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Case Number</label>
+                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Broj predmeta</label>
                   <input
                     type="text"
                     className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-[#00FF00] focus:ring-0 transition-colors font-mono text-sm"
@@ -103,7 +103,7 @@ export default function CreateTaskModal({ isOpen, onClose }: CreateTaskModalProp
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold text-gray-500 uppercase mb-2">Category & Folder Color</label>
+                <label className="block text-[10px] font-bold text-gray-500 uppercase mb-2">Kategorija i boja fascikle</label>
                 <div className="grid grid-cols-3 gap-3">
                   {[
                     { name: 'Parnica', color: 'bg-green-500', border: 'border-green-600' },
@@ -134,44 +134,44 @@ export default function CreateTaskModal({ isOpen, onClose }: CreateTaskModalProp
             <div className="space-y-4">
               <div className="flex items-center space-x-2 pb-2 border-b border-gray-100">
                 <div className="w-1 h-4 bg-blue-500 rounded-full" />
-                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Roles & Assignment</h3>
+                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Uloge i dodela</h3>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Registrar (Referent)</label>
+                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Referent (Zapisničar)</label>
                   <select
                     className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-[#00FF00] focus:ring-0 transition-colors text-sm"
                     value={formData.registrarId}
                     onChange={(e) => setFormData({ ...formData, registrarId: e.target.value })}
                   >
-                    <option value="">Select Registrar</option>
+                    <option value="">Izaberi referenta</option>
                     {employees.map((emp) => (
                       <option key={emp.id} value={emp.id}>{emp.firstName} {emp.lastName}</option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">SMIL Assignee (Sudija)</label>
+                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">SMIL izvršilac (Sudija)</label>
                   <select
                     className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-[#00FF00] focus:ring-0 transition-colors text-sm"
                     value={formData.smilAssigneeId}
                     onChange={(e) => setFormData({ ...formData, smilAssigneeId: e.target.value })}
                   >
-                    <option value="">Select SMIL Assignee</option>
+                    <option value="">Izaberi sudiju</option>
                     {employees.map((emp) => (
                       <option key={emp.id} value={emp.id}>{emp.firstName} {emp.lastName}</option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Current Handler</label>
+                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Trenutni obrađivač</label>
                   <select
                     className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-[#00FF00] focus:ring-0 transition-colors text-sm"
                     value={formData.assignedToId}
                     onChange={(e) => setFormData({ ...formData, assignedToId: e.target.value })}
                   >
-                    <option value="">Select Handler</option>
+                    <option value="">Izaberi obrađivača</option>
                     {employees.map((emp) => (
                       <option key={emp.id} value={emp.id}>{emp.firstName} {emp.lastName}</option>
                     ))}
@@ -184,19 +184,19 @@ export default function CreateTaskModal({ isOpen, onClose }: CreateTaskModalProp
             <div className="space-y-4">
               <div className="flex items-center space-x-2 pb-2 border-b border-gray-100">
                 <div className="w-1 h-4 bg-orange-500 rounded-full" />
-                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Source & Logistics</h3>
+                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Izvor i logistika</h3>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4 p-4 bg-gray-50 rounded-2xl border border-gray-100">
-                  <p className="text-[9px] font-bold text-gray-400 uppercase">Originator (Source)</p>
+                  <p className="text-[9px] font-bold text-gray-400 uppercase">Podnosilac (Izvor)</p>
                   <div className="grid grid-cols-1 gap-3">
                     <select
                       className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-[#00FF00] focus:ring-0 transition-colors text-sm bg-white"
                       value={formData.sourceDepartmentId}
                       onChange={(e) => setFormData({ ...formData, sourceDepartmentId: e.target.value, originatorId: '' })}
                     >
-                      <option value="">Source Organization</option>
+                      <option value="">Izvorna organizacija</option>
                       {departments.map((dept) => (
                         <option key={dept.id} value={dept.id}>{dept.name}</option>
                       ))}
@@ -207,7 +207,7 @@ export default function CreateTaskModal({ isOpen, onClose }: CreateTaskModalProp
                       onChange={(e) => setFormData({ ...formData, originatorId: e.target.value })}
                       disabled={!formData.sourceDepartmentId}
                     >
-                      <option value="">Source Person / Judge</option>
+                      <option value="">Izvorna osoba / Sudija</option>
                       {employees
                         .filter(emp => emp.departmentId === formData.sourceDepartmentId)
                         .map((emp) => (
@@ -218,7 +218,7 @@ export default function CreateTaskModal({ isOpen, onClose }: CreateTaskModalProp
                 </div>
 
                 <div className="space-y-4 p-4 bg-gray-50 rounded-2xl border border-gray-100">
-                  <p className="text-[9px] font-bold text-gray-400 uppercase">Target & Timeline</p>
+                  <p className="text-[9px] font-bold text-gray-400 uppercase">Cilj i rokovi</p>
                   <div className="grid grid-cols-1 gap-3">
                     <div className="grid grid-cols-2 gap-2">
                       <select
@@ -227,9 +227,9 @@ export default function CreateTaskModal({ isOpen, onClose }: CreateTaskModalProp
                         value={formData.priority}
                         onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
                       >
-                        <option value="Low">Low Priority</option>
-                        <option value="Medium">Medium Priority</option>
-                        <option value="High">High Priority</option>
+                        <option value="Low">Nizak prioritet</option>
+                        <option value="Medium">Srednji prioritet</option>
+                        <option value="High">Visok prioritet</option>
                       </select>
                       <input
                         type="date"
@@ -244,7 +244,7 @@ export default function CreateTaskModal({ isOpen, onClose }: CreateTaskModalProp
                       value={formData.departmentId}
                       onChange={(e) => setFormData({ ...formData, departmentId: e.target.value })}
                     >
-                      <option value="">Target Department</option>
+                      <option value="">Ciljno odeljenje</option>
                       {departments.map((dept) => (
                         <option key={dept.id} value={dept.id}>{dept.name}</option>
                       ))}
@@ -258,29 +258,29 @@ export default function CreateTaskModal({ isOpen, onClose }: CreateTaskModalProp
             <div className="space-y-4">
               <div className="flex items-center space-x-2 pb-2 border-b border-gray-100">
                 <div className="w-1 h-4 bg-gray-400 rounded-full" />
-                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Additional Details</h3>
+                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Dodatni detalji</h3>
               </div>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Description / Notes</label>
+                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Opis / Napomene</label>
                   <textarea
                     className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-[#00FF00] focus:ring-0 transition-colors text-sm"
                     rows={3}
-                    placeholder="Enter any additional information..."
+                    placeholder="Unesite dodatne informacije..."
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Link to Existing Case/Task</label>
+                  <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Veza sa postojećim predmetom</label>
                   <select
                     className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-[#00FF00] focus:ring-0 transition-colors text-sm"
                     value={formData.parentTaskId}
                     onChange={(e) => setFormData({ ...formData, parentTaskId: e.target.value })}
                   >
-                    <option value="">No Link</option>
+                    <option value="">Bez veze</option>
                     {tasks.map((t) => (
                       <option key={t.id} value={t.id}>{t.caseNumber ? `[${t.caseNumber}] ` : ''}{t.title}</option>
                     ))}
@@ -297,13 +297,13 @@ export default function CreateTaskModal({ isOpen, onClose }: CreateTaskModalProp
             onClick={onClose}
             className="px-6 py-2 rounded-xl text-sm font-bold text-gray-500 hover:bg-gray-100 transition-colors"
           >
-            Cancel
+            Otkaži
           </button>
           <button
             onClick={handleSubmit}
             className="px-8 py-2 bg-[#00FF00] text-black rounded-xl text-sm font-bold hover:shadow-lg hover:shadow-[#00FF00]/20 transition-all active:scale-95"
           >
-            Create Case Entry
+            Kreiraj unos predmeta
           </button>
         </div>
       </div>

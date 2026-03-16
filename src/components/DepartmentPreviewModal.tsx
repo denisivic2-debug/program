@@ -22,7 +22,7 @@ export default function DepartmentPreviewModal({ isOpen, onClose, department }: 
         <div className="p-8 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">{department.name}</h2>
-            <p className="text-gray-500 text-sm mt-1">Team Overview • {deptEmployees.length} Members</p>
+            <p className="text-gray-500 text-sm mt-1">Pregled tima • {deptEmployees.length} Članova</p>
           </div>
           <button 
             onClick={onClose}
@@ -38,7 +38,7 @@ export default function DepartmentPreviewModal({ isOpen, onClose, department }: 
               <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
                 <User className="text-gray-300" size={32} />
               </div>
-              <p className="text-gray-500 font-medium">No employees assigned to this department yet.</p>
+              <p className="text-gray-500 font-medium">Još uvek nema zaposlenih u ovom odeljenju.</p>
             </div>
           ) : (
             <div className="grid gap-4">
@@ -62,7 +62,7 @@ export default function DepartmentPreviewModal({ isOpen, onClose, department }: 
                   </div>
                   <div className="text-right">
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 uppercase tracking-wider">
-                      Active
+                      Aktivan
                     </span>
                   </div>
                 </div>
@@ -76,7 +76,7 @@ export default function DepartmentPreviewModal({ isOpen, onClose, department }: 
             onClick={onClose}
             className="px-6 py-2.5 bg-[#151619] text-white font-bold rounded-xl hover:bg-black transition-all"
           >
-            Close Preview
+            Zatvori pregled
           </button>
         </div>
       </div>

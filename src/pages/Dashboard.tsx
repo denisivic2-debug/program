@@ -24,7 +24,7 @@ export default function Dashboard() {
     .then(setStats);
   }, [token]);
 
-  if (!stats) return <div className="flex items-center justify-center h-full">Loading...</div>;
+  if (!stats) return <div className="flex items-center justify-center h-full">Učitavanje...</div>;
 
   const statusData = stats.tasksByStatus.map((s: any) => ({
     name: s.status,
@@ -48,23 +48,23 @@ export default function Dashboard() {
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-tight">Overview</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Pregled</h1>
         <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100">
           <TrendingUp size={18} className="text-[#00FF00]" />
-          <span className="text-sm font-medium">System Performance: Optimal</span>
+          <span className="text-sm font-medium">Performanse sistema: Optimalno</span>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StatCard title="Total Tasks" value={stats.totalTasks} icon={CheckCircle2} color="bg-blue-500" />
-        <StatCard title="Active Employees" value={stats.totalEmployees} icon={Users} color="bg-indigo-500" />
-        <StatCard title="Overdue Tasks" value={stats.overdueTasks} icon={AlertCircle} color="bg-red-500" />
-        <StatCard title="Pending Review" value={stats.tasksByStatus.find((s:any) => s.status === 'Waiting')?._count || 0} icon={Clock} color="bg-yellow-500" />
+        <StatCard title="Ukupno predmeta" value={stats.totalTasks} icon={CheckCircle2} color="bg-blue-500" />
+        <StatCard title="Aktivni zaposleni" value={stats.totalEmployees} icon={Users} color="bg-indigo-500" />
+        <StatCard title="Zakašneli predmeti" value={stats.overdueTasks} icon={AlertCircle} color="bg-red-500" />
+        <StatCard title="Čeka na pregled" value={stats.tasksByStatus.find((s:any) => s.status === 'Waiting')?._count || 0} icon={Clock} color="bg-yellow-500" />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-          <h3 className="text-lg font-bold mb-6">Task Distribution</h3>
+          <h3 className="text-lg font-bold mb-6">Distribucija predmeta</h3>
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={statusData}>
@@ -82,7 +82,7 @@ export default function Dashboard() {
         </div>
 
         <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-          <h3 className="text-lg font-bold mb-6">Status Breakdown</h3>
+          <h3 className="text-lg font-bold mb-6">Analiza statusa</h3>
           <div className="h-80 flex items-center justify-center">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -102,7 +102,7 @@ export default function Dashboard() {
             </ResponsiveContainer>
             <div className="absolute flex flex-col items-center">
               <span className="text-3xl font-bold">{stats.totalTasks}</span>
-              <span className="text-xs text-gray-500 uppercase tracking-widest">Tasks</span>
+              <span className="text-xs text-gray-500 uppercase tracking-widest">Predmeta</span>
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ import { format } from 'date-fns';
 import CreateTaskModal from './CreateTaskModal';
 import TaskDetailsModal from './TaskDetailsModal';
 
-const COLUMNS = ['Pending', 'In Progress', 'Waiting', 'Completed'];
+const COLUMNS = ['Na čekanju', 'U toku', 'Čeka se', 'Završeno'];
 
 export default function KanbanBoard() {
   const { tasks, updateTaskStatus, deleteTask } = useDataStore();
@@ -95,7 +95,7 @@ export default function KanbanBoard() {
                                   <button 
                                     onClick={(e) => { e.stopPropagation(); handleDeleteTask(task.id); }}
                                     className="p-1 text-gray-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all"
-                                    title="Delete Task"
+                                    title="Obriši predmet"
                                   >
                                     <Trash2 size={14} />
                                   </button>
@@ -109,7 +109,7 @@ export default function KanbanBoard() {
                               <div className="flex items-center justify-between pt-3 border-t border-gray-50">
                                 <div className="flex items-center text-[10px] text-gray-400">
                                   <Calendar size={12} className="mr-1" />
-                                  {task.dueDate ? format(new Date(task.dueDate), 'MMM d') : 'No date'}
+                                  {task.dueDate ? format(new Date(task.dueDate), 'd. MMM') : 'Bez datuma'}
                                 </div>
                                 <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-[10px] font-bold" title={`${task.assignedTo?.firstName} ${task.assignedTo?.lastName}`}>
                                   {task.assignedTo?.firstName[0] || '?'}

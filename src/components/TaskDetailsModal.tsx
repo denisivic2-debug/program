@@ -43,7 +43,7 @@ export default function TaskDetailsModal({ isOpen, onClose, task }: TaskDetailsM
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${
                   task.priority === 'High' ? 'bg-red-50 text-red-500' : 'bg-yellow-50 text-yellow-600'
                 }`}>
-                  {task.priority} Priority
+                  {task.priority === 'High' ? 'Visok' : 'Srednji'} prioritet
                 </span>
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase flex items-center space-x-1 ${
                   task.category === 'Parnica' ? 'bg-green-50 text-green-600' :
@@ -75,10 +75,10 @@ export default function TaskDetailsModal({ isOpen, onClose, task }: TaskDetailsM
             <div>
               <div className="flex items-center space-x-2 pb-2 border-b border-gray-100 mb-3">
                 <div className="w-1 h-4 bg-gray-400 rounded-full" />
-                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Case Description</h3>
+                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Opis predmeta</h3>
               </div>
               <p className="text-gray-600 text-sm leading-relaxed bg-gray-50 p-4 rounded-2xl border border-gray-100">
-                {task.description || 'No description provided.'}
+                {task.description || 'Opis nije unet.'}
               </p>
             </div>
 
@@ -86,20 +86,20 @@ export default function TaskDetailsModal({ isOpen, onClose, task }: TaskDetailsM
             <div className="space-y-4">
               <div className="flex items-center space-x-2 pb-2 border-b border-gray-100">
                 <div className="w-1 h-4 bg-blue-500 rounded-full" />
-                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">People & Roles</h3>
+                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Ljudi i uloge</h3>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Source / Originator */}
                 <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                  <label className="text-[9px] font-bold text-gray-400 uppercase mb-2 block">Originator (Source)</label>
+                  <label className="text-[9px] font-bold text-gray-400 uppercase mb-2 block">Podnosilac (Izvor)</label>
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center font-bold text-blue-500 border border-blue-100">
                       {task.originator ? task.originator.firstName[0] : '?'}
                     </div>
                     <div>
-                      <p className="text-sm font-bold">{task.originator ? `${task.originator.firstName} ${task.originator.lastName}` : 'External Source'}</p>
-                      <p className="text-[10px] text-gray-500">{task.originator?.position || 'Originator'}</p>
+                      <p className="text-sm font-bold">{task.originator ? `${task.originator.firstName} ${task.originator.lastName}` : 'Eksterni izvor'}</p>
+                      <p className="text-[10px] text-gray-500">{task.originator?.position || 'Podnosilac'}</p>
                       {task.originator?.department && (
                         <span className="text-[9px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-bold mt-1 inline-block">
                           {task.originator.department.name}
@@ -111,20 +111,20 @@ export default function TaskDetailsModal({ isOpen, onClose, task }: TaskDetailsM
 
                 {/* Current Assignee */}
                 <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                  <label className="text-[9px] font-bold text-gray-400 uppercase mb-2 block">Current Handler</label>
+                  <label className="text-[9px] font-bold text-gray-400 uppercase mb-2 block">Trenutni obrađivač</label>
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-[#00FF00]/10 rounded-full flex items-center justify-center font-bold text-[#00FF00] border border-[#00FF00]/20">
                       {task.assignedTo ? task.assignedTo.firstName[0] : '?'}
                     </div>
                     <div>
-                      <p className="text-sm font-bold">{task.assignedTo ? `${task.assignedTo.firstName} ${task.assignedTo.lastName}` : 'Unassigned'}</p>
+                      <p className="text-sm font-bold">{task.assignedTo ? `${task.assignedTo.firstName} ${task.assignedTo.lastName}` : 'Nedodeljeno'}</p>
                       <div className="flex items-center space-x-2">
-                        <p className="text-[10px] text-gray-500">{task.assignedTo?.position || 'Pending Assignment'}</p>
+                        <p className="text-[10px] text-gray-500">{task.assignedTo?.position || 'Čeka na dodelu'}</p>
                         <button 
                           onClick={() => setIsAssigning(!isAssigning)}
                           className="text-[10px] text-[#00FF00] font-bold hover:underline"
                         >
-                          {isAssigning ? 'Cancel' : 'Change'}
+                          {isAssigning ? 'Otkaži' : 'Promeni'}
                         </button>
                       </div>
                     </div>
@@ -136,7 +136,7 @@ export default function TaskDetailsModal({ isOpen, onClose, task }: TaskDetailsM
                         onChange={(e) => handleReassign(e.target.value)}
                         value={task.assignedToId || ''}
                       >
-                        <option value="">Unassigned</option>
+                        <option value="">Nedodeljeno</option>
                         {employees.map(emp => (
                           <option key={emp.id} value={emp.id}>{emp.firstName} {emp.lastName} ({emp.department?.name})</option>
                         ))}
@@ -147,13 +147,13 @@ export default function TaskDetailsModal({ isOpen, onClose, task }: TaskDetailsM
 
                 {/* Registrar */}
                 <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                  <label className="text-[9px] font-bold text-gray-400 uppercase mb-2 block">Registrar (Referent)</label>
+                  <label className="text-[9px] font-bold text-gray-400 uppercase mb-2 block">Referent (Zapisničar)</label>
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center font-bold text-gray-500 border border-gray-100">
                       {task.registrar ? task.registrar.firstName[0] : '?'}
                     </div>
                     <div>
-                      <p className="text-xs font-bold">{task.registrar ? `${task.registrar.firstName} ${task.registrar.lastName}` : 'Not specified'}</p>
+                      <p className="text-xs font-bold">{task.registrar ? `${task.registrar.firstName} ${task.registrar.lastName}` : 'Nije navedeno'}</p>
                       <p className="text-[9px] text-gray-500">{task.registrar?.position}</p>
                     </div>
                   </div>
@@ -161,13 +161,13 @@ export default function TaskDetailsModal({ isOpen, onClose, task }: TaskDetailsM
 
                 {/* SMIL Assignee */}
                 <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                  <label className="text-[9px] font-bold text-gray-400 uppercase mb-2 block">SMIL Assignee (Sudija)</label>
+                  <label className="text-[9px] font-bold text-gray-400 uppercase mb-2 block">SMIL izvršilac (Sudija)</label>
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 bg-indigo-50 rounded-full flex items-center justify-center font-bold text-indigo-500 border border-indigo-100">
                       {task.smilAssignee ? task.smilAssignee.firstName[0] : '?'}
                     </div>
                     <div>
-                      <p className="text-xs font-bold">{task.smilAssignee ? `${task.smilAssignee.firstName} ${task.smilAssignee.lastName}` : 'Not specified'}</p>
+                      <p className="text-xs font-bold">{task.smilAssignee ? `${task.smilAssignee.firstName} ${task.smilAssignee.lastName}` : 'Nije navedeno'}</p>
                       <p className="text-[9px] text-gray-500">{task.smilAssignee?.position}</p>
                     </div>
                   </div>
@@ -179,22 +179,22 @@ export default function TaskDetailsModal({ isOpen, onClose, task }: TaskDetailsM
             <div className="space-y-4">
               <div className="flex items-center space-x-2 pb-2 border-b border-gray-100">
                 <div className="w-1 h-4 bg-orange-500 rounded-full" />
-                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Logistics & Linking</h3>
+                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Logistika i povezivanje</h3>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100">
-                  <label className="text-[9px] font-bold text-gray-400 uppercase mb-2 block">Timeline</label>
+                  <label className="text-[9px] font-bold text-gray-400 uppercase mb-2 block">Rok</label>
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <Calendar size={16} />
-                    <span className="font-medium">{task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'No deadline'}</span>
+                    <span className="font-medium">{task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'Bez roka'}</span>
                   </div>
                 </div>
 
                 {task.parentTask && (
                   <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100">
                     <label className="text-[9px] font-bold text-blue-400 uppercase mb-2 block flex items-center">
-                      <LinkIcon size={12} className="mr-1" /> Linked to Case
+                      <LinkIcon size={12} className="mr-1" /> Povezano sa predmetom
                     </label>
                     <p className="text-sm font-bold text-blue-900">{task.parentTask.title}</p>
                     <p className="text-[10px] text-blue-700 mt-1 line-clamp-1">{task.parentTask.description}</p>
@@ -204,7 +204,7 @@ export default function TaskDetailsModal({ isOpen, onClose, task }: TaskDetailsM
 
               {task.childTasks && task.childTasks.length > 0 && (
                 <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100">
-                  <label className="text-[9px] font-bold text-gray-400 uppercase mb-2 block">Related Tickets</label>
+                  <label className="text-[9px] font-bold text-gray-400 uppercase mb-2 block">Povezani tiketi</label>
                   <div className="space-y-2">
                     {task.childTasks.map(child => (
                       <div key={child.id} className="p-2 bg-white rounded-xl border border-gray-100 flex items-center justify-between shadow-sm">
@@ -226,7 +226,7 @@ export default function TaskDetailsModal({ isOpen, onClose, task }: TaskDetailsM
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-2">
               <History size={18} className="text-gray-400" />
-              <h3 className="font-bold">Movement History</h3>
+              <h3 className="font-bold">Istorija kretanja</h3>
             </div>
             <button onClick={onClose} className="hidden md:block p-2 hover:bg-white rounded-full transition-colors">
               <X size={20} />
@@ -253,12 +253,12 @@ export default function TaskDetailsModal({ isOpen, onClose, task }: TaskDetailsM
                     )}
                     <span className="text-black font-medium">{entry.newValue}</span>
                   </div>
-                  <p className="text-[9px] text-gray-400 mt-2 italic">By: {entry.changedBy}</p>
+                  <p className="text-[9px] text-gray-400 mt-2 italic">Od: {entry.changedBy}</p>
                 </div>
               </div>
             ))}
             {(!(task as any).history || (task as any).history.length === 0) && (
-              <p className="text-xs text-gray-400 text-center py-8">No history recorded yet.</p>
+              <p className="text-xs text-gray-400 text-center py-8">Još uvek nema zabeležene istorije.</p>
             )}
           </div>
         </div>
